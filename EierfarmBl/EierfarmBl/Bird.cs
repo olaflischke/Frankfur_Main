@@ -15,7 +15,7 @@ namespace EierfarmBl
         public event EventHandler<BirdEventArgs> PropertyChanged;
 
         // Event-Trigger
-        private void OnPropertyChanged([CallerMemberName]string propertyName="")
+        private void OnPropertyChanged([CallerMemberName]string propertyName = "")
         {
             if (PropertyChanged != null)
             {
@@ -27,7 +27,7 @@ namespace EierfarmBl
 
         //MachWas machWas;
 
-            private Bird() { }
+        private Bird() { }
 
         public Bird(string name)
         {

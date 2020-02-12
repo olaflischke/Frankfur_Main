@@ -7,7 +7,7 @@ namespace TradingDayDalUnitTest
     [TestClass]
     public class ArchiveUnitTest
     {
-        string url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml";
+        string url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.xml";
 
         [TestMethod]
         public void ArchiveInitTest()

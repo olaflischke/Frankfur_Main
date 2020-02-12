@@ -10,14 +10,14 @@ namespace EierfarmBl
     [Serializable]
     public class Egg
     {
-        private Egg()
-        {
+        //private Egg()
+        //{
 
-        }
+        //}
 
-        public Egg(IEggProducer mother)
+        public Egg(/*IEggProducer mother*/)
         {
-            this.Mother = mother;
+            //this.Mother = mother;
 
             Random random = new Random();
             this.Weight = random.NextDouble() * 35 + 45;
@@ -35,8 +35,36 @@ namespace EierfarmBl
         public EggColor Color { get; set; }
         public DateTime LayingDate { get; set; }
 
-        [XmlIgnore]
-        public IEggProducer Mother { get; set; }
+        //[XmlIgnore]
+        //public IEggProducer Mother { get; set; }
+    }
+
+    public class Egg<TEggProducer> : Egg where TEggProducer : class, IEggProducer //, IDisposable, new()
+    {
+        public Egg(TEggProducer mother) //: base(mother)
+        {
+            this.Mother = mother;
+
+            Random random = new Random();
+
+            switch (mother)
+            {
+                case Chicken chicken:
+                    this.Weight = random.NextDouble() * 45 + 35;
+                    break;
+
+                case Duck duck:
+                    this.Weight = random.NextDouble() * 25 + 10;
+                    break;
+
+                default:
+                    break;
+            }
+
+            this.Color = (EggColor)random.Next(3);
+        }
+
+        public TEggProducer Mother { get; set; }
     }
 
     public enum EggColor

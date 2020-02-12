@@ -32,7 +32,9 @@ namespace EierfarmBl
 
         public void LayEgg()
         {
-            throw new NotImplementedException();
+            Egg<Platibus> egg = new Egg<Platibus>(this);
+
+            Egg<IEggProducer> egg1 = new Egg<IEggProducer>(this);
         }
     }
 }
